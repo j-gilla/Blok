@@ -8,4 +8,4 @@ let bodyParser = require('body-parser');
 
 
 app.listen(port);
-console.log("All wathced over port " + port + " of loving grace. ");
+console.log("All wathced over by port " + port + " of loving grace. ");
