@@ -12,14 +12,15 @@ class Root extends React.Component {
   render() {
     return (
       <Router>
-        <Route  exact path="/" component={App}>
-        <Route path="/login" component={Login} />
-        <Route path="/user/:accessToken/:refreshToken" component={User} />
-        <Route path="/error/:errorMsg" component={Error} />
-      </Route>
-    </Router>
-  );
-}
+        <Switch>
+          <Route exact path="/" component={App}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/user/:accessToken/:refreshToken" component={User}/>
+          <Route path="/error/:errorMsg" component={Error}/>
+        </Switch>
+      </Router>
+    );
+  }
 }
 
 const rootElement = document.getElementById('root');

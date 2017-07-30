@@ -3,13 +3,13 @@
 const Spotify = require('spotify-web-api-node');
 const queryString = require('query-string');
 const express = require('express');
-const router = new expres.Router();
+const router = new express.Router();
 
 
 //configure the express server
-const CLIENT_ID = require('./.config.js');
-const CLIENT_SECRET = require('./.config.js');
-const REDIRECT_URI = require('./.config.js'); || 'http://localhost:8080/callback';
+const CLIENT_ID = require('../.config.js');
+const CLIENT_SECRET = require('../.config.js');
+const REDIRECT_URI = require('../.config.js') || 'http://localhost:8080/callback';
 //application requests authorization
 const scopes = ['user-read-private', 'user-read-email'];
 
@@ -33,7 +33,7 @@ router.get('/callback', (req, res) => {
   const { code, state } = req.query;
   const storedState = req.cookies ? req.cookies[STATE_KEY] : null;
   //first do state validation
-  if(state === null || !== storedState){
+  if(state === null || state !== storedState){
     res.redirect('/#/error/state mismatch');
     //if state valid, get auth code and pass onto client
   }else {
@@ -51,10 +51,10 @@ router.get('/callback', (req, res) => {
       });
 
       res.redirect(`/#/user/${access_token}/{$refresh_token}`);
-    }).cath(err =>{
+    }).catch(err =>{
       res.redirect('/#/error/invalid token');
     });
   }
 });
 
-module.exports = auth;
+module.exports = router;

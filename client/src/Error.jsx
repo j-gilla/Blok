@@ -6,8 +6,6 @@ export default class Error extends React.Component {
     return (
       <div>
         <h2>An Error Occured</h2>
-      
-
         <p>{errorMsg}</p>
       </div>
     );
